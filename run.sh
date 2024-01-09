@@ -6,4 +6,4 @@ python3 -m wyoming_faster_whisper \
     --data-dir /data \
     --download-dir /data "$@" \
     --model medium \
-    --beam_size 5
+    --beam-size 5
