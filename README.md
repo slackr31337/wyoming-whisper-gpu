@@ -1,5 +1,7 @@
 Wyoming Whisper docker container with GPU support for Home-Assistant
 
+Docker: https://hub.docker.com/r/confusedengineer/wyoming-whisper-gpu
+
 docker pull confusedengineer/wyoming-whisper-gpu:latest
 
 I made changes with TrueNAS users in mind by removing the "command" portions as they seemed to cause some difficulties.
