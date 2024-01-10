@@ -11,6 +11,7 @@ RUN \
         python3 \
         python3-dev \
         python3-pip \
+        nvidia-cuda-toolkit \
     \
     && pip3 install --no-cache-dir -U \
         setuptools \
