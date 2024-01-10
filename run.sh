@@ -6,4 +6,5 @@ python3 -m wyoming_faster_whisper \
     --data-dir /data \
     --download-dir /data "$@" \
     --model small \
-    --beam-size 5
+    --beam-size 5 \
+    --device cuda
