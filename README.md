@@ -13,5 +13,6 @@ Requirements when running:
  - Add NVIDIA GPU access
  - Enjoy!
 
-todo: Make environment variables to adjust beam size, model, and device:
-Current defaults are 5, medium-int8, and CUDA (NVIDIA), respectively 
+todo: Make environment variables to adjust beam size, model, device, etc.
+
+Currently defaults are 5, medium-int8, cuda, english.
