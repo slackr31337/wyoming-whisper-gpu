@@ -14,4 +14,4 @@ Requirements when running:
  - Enjoy!
 
 todo: Make environment variables to adjust beam size, model, and device:
-Current defaults are 5, Medium-int, and CUDA (NVIDIA), respectively 
+Current defaults are 5, medium-int8, and CUDA (NVIDIA), respectively 
