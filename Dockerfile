@@ -2,7 +2,7 @@ FROM nvidia/cuda:11.7.1-base-ubuntu22.04
 
 # Install Whisper
 WORKDIR /usr/src
-ARG WHISPER_VERSION='1.0.1'
+ARG WHISPER_VERSION='2.0.0'
 
 RUN \
     apt-get update \
