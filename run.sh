@@ -5,6 +5,4 @@ python3 -m wyoming_faster_whisper \
     --uri 'tcp://0.0.0.0:10300' \
     --data-dir /data \
     --download-dir /data "$@" \
-    --model medium-int8 \
-    --beam-size 5 \
-    --device cuda
+
