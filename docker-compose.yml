@@ -1,0 +1,16 @@
+services:
+  whisper:
+    container_name: whisper
+    image: confusedengineer/wyoming-whisper-gpu
+    ports:
+        - '10300:10300'
+    volumes:
+        - '/path/to/whisper/folder:/data'
+    command: --model medium-int8 --language en --beam-size 5 --device cuda #find more command details @ https://github.com/home-assistant/addons/blob/master/whisper/DOCS.md
+    deploy:
+        resources:
+        reservations:
+            devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

@@ -1,0 +1,17 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Docker Build Image",
+            "type": "shell",
+            "command": "docker buildx build . -t confusedengineer/wyoming-whisper-gpu:latest"
+        },
+        {
+            "label": "Docker Push Image",
+            "type": "shell",
+            "command": "docker push confusedengineer/wyoming-whisper-gpu:latest"   
+        }
+    ]
+}
