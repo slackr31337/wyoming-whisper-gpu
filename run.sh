@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/lib/python3.10/dist-packages/nvidia/cudnn/lib/
+export LD_LIBRARY_PATH=/app/lib:/app/lib/python3.10/dist-packages/nvidia/cudnn/lib/:$LD_LIBRARY_PATH
 
 source /app/bin/activate
 /app/bin/python3 -m  wyoming_faster_whisper \
