@@ -9,8 +9,6 @@ https://github.com/rhasspy/wyoming-faster-whisper
 docker pull ghcr.io/slackr31337/wyoming-whisper-gpu:latest
 
 
-# Use environment variable to set model
-
 Default model: tiny-int8
 
 Example models:
@@ -35,6 +33,8 @@ Example models:
 - distil-medium.en
 - distil-small.en
 
+
+Use environment variable to set model
 
 Environment variables:
 
