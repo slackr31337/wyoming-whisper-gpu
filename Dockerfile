@@ -1,32 +1,51 @@
-FROM nvidia/cuda:11.7.1-base-ubuntu22.04
+##########################################
+FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 
-# Install Whisper
-WORKDIR /usr/src
-ARG WHISPER_VERSION='1.0.1'
+ARG WHISPER_VERSION='2.4.0'
+
+ENV LANG=C.UTF-8
+ENV DEBIAN_FRONTEND=noninteractive
+
+WORKDIR /app
 
 RUN \
-    apt-get update \
-    && apt-get install -y --no-install-recommends \
-        build-essential \
+    apt-get update && apt-get upgrade -y &&\
+    apt-get install -y --no-install-recommends \
+        wget \
+        curl \
+        vim \
+        git \
         python3 \
         python3-dev \
+        python3-venv \
         python3-pip \
-    \
-    && pip3 install --no-cache-dir -U \
-        setuptools \
-        wheel \
-    && pip3 install --no-cache-dir torch \
-    && pip3 install --no-cache-dir \
-        "wyoming-faster-whisper==${WHISPER_VERSION}" \
-    \
-    && apt-get purge -y --auto-remove \
         build-essential \
-        python3-dev \
-    && rm -rf /var/lib/apt/lists/*
+        cmake \
+        ca-certificates \
+        pkg-config
 
-WORKDIR /
-COPY run.sh ./
+RUN \
+    python3 -m venv /app &&\
+    \
+    . /app/bin/activate && \
+    /app/bin/python3 -m pip install --no-cache-dir -U \
+        setuptools \
+        wheel &&\
+    \
+    /app/bin/python3 -m pip install --no-cache-dir torch &&\
+    \
+    /app/bin/python3 -m pip install --no-cache-dir \
+        --extra-index-url https://www.piwheels.org/simple \
+        "wyoming-faster-whisper @ https://github.com/rhasspy/wyoming-faster-whisper/archive/refs/tags/v${WHISPER_VERSION}.tar.gz" &&\
+    \
+    apt-get purge -y --auto-remove \
+        build-essential \
+        python3-dev &&\
+    \
+    rm -rf /var/lib/apt/lists/*
+
+COPY run.sh .
 
 EXPOSE 10300
 
-ENTRYPOINT ["bash", "/run.sh"]
+ENTRYPOINT ["bash", "/app/run.sh"]
