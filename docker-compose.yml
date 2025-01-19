@@ -1,0 +1,25 @@
+services:
+  wyoming-whisper:  
+    image: slackr31337/wyoming-whisper-gpu:latest  
+    container_name: wyoming-whisper
+    environment:  
+      - MODEL=base-int8
+      - LANGUAGE=en
+      - COMPUTE_TYPE=int8
+      - BEAM_SIZE=5
+    ports:  
+      - 10300:10300
+    volumes:  
+      - /path/to/persistent/data:/data  
+    restart: unless-stopped
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities:
+                - gpu
+                - utility
+                - compute

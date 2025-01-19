@@ -1,4 +1,4 @@
-Wyoming Whisper SST docker container with Nvidia GPU support for Home-Assistant
+Wyoming Whisper STT docker container with Nvidia GPU support for Home-Assistant
 
 https://github.com/rhasspy/wyoming-faster-whisper
 
