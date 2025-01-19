@@ -1,5 +1,5 @@
 ##########################################
-FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
+FROM nvidia/cuda:12.3.2-cudnn9-runtime-ubuntu22.04
 
 ARG WHISPER_VERSION='2.4.0'
 
@@ -42,7 +42,7 @@ RUN \
         build-essential \
         python3-dev &&\
     \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /root/.cache/* /var/lib/apt/lists/*
 
 COPY run.sh .
 
