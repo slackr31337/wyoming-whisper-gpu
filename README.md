@@ -9,9 +9,7 @@ https://github.com/rhasspy/wyoming-faster-whisper
 docker pull ghcr.io/slackr31337/wyoming-whisper-gpu:latest
 
 
-Default model: tiny-int8
-
-Example models:
+Models:
 
 - tiny-int8
 - tiny.en
@@ -34,15 +32,16 @@ Example models:
 - distil-small.en
 
 
-Use environment variable to set model
-
 Environment variables:
 
-> MODEL=base-int8
+> MODEL=base-int8 (Name of faster-whisper model to use)
 >
-> LANGUAGE=en
+> LANGUAGE=en (Default language to set for transcription)
 >
-
+> COMPUTE_TYPE=int8 (float16, int8, etc.)
+>
+> BEAM_SIZE=5 (Size of beam during decoding. 0 for auto)
+>
 
 # Docker compose
 
@@ -52,6 +51,9 @@ Environment variables:
     container_name: wyoming-whisper
     environment:  
       - MODEL=base-int8
+      - LANGUAGE=en
+      - COMPUTE_TYPE=int8
+      - BEAM_SIZE=5
     ports:  
       - 10300:10300
     volumes:  
