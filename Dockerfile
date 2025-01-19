@@ -5,6 +5,7 @@ ARG WHISPER_VERSION='2.4.0'
 
 ENV LANG=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
+ENV LD_LIBRARY_PATH=/app/lib:$LD_LIBRARY_PATH
 
 WORKDIR /app
 
@@ -37,6 +38,8 @@ RUN \
     /app/bin/python3 -m pip install --no-cache-dir \
         --extra-index-url https://www.piwheels.org/simple \
         "wyoming-faster-whisper @ https://github.com/rhasspy/wyoming-faster-whisper/archive/refs/tags/v${WHISPER_VERSION}.tar.gz" &&\
+    \
+    cp /app/lib/python3.10/site-packages/nvidia/cudnn/lib/lib*.so.* /app/lib/ &&\
     \
     apt-get purge -y --auto-remove \
         build-essential \
